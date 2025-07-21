@@ -24,7 +24,36 @@ function toggleF() {
     },
   });
   ///analog watch
-let hourHand = document.querySelector('.hour-hand');
+function setClock() {
+  let hourHand = document.querySelector('.hour-hand');
 let minuteHand = document.querySelector('.minute-hand');
 let secondHand = document.querySelector('.second-hand');
+let digitalHour=document.querySelector('.digital-hour')
+let digitalMinute=document.querySelector('.digital-minute')
+let digitalSecond=document.querySelector('.digital-second')
+let nw=new Date()
+digitalHour.innerHTML=nw.getHours()
+digitalMinute.innerHTML=nw.getMinutes()
+digitalSecond.innerHTML=nw.getSeconds()
+
+
+let hourTime=nw.getHours()%12
+ if (hourTime === 0) 
+  hourTime = 12;
+let minuteTime=nw.getMinutes()
+let secondTime=nw.getSeconds()
+const hourDeg = (hourTime * 30) + (minuteTime * 0.5);
+const minuteDeg = minuteTime * 6;
+const secondDeg = secondTime * 6;
+hourHand.style.transform = `rotate(${hourDeg}deg)`;
+minuteHand.style.transform = `rotate(${minuteDeg}deg)`;
+secondHand.style.transform = `rotate(${secondDeg}deg)`;
+  
+}
+
+setInterval(setClock,1000)
+setClock();
+
+
+
 
