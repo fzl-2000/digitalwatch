@@ -1,0 +1,107 @@
+/**********header-style*****/
+header{
+    width: 100%;
+    background-color: var(--header--bg);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding:1rem  1.5rem;
+    color: #fff;
+    font-weight: 200;
+}
+.convert_farsi_parent{
+    position: relative;
+   width: 80px;
+   height: 25px;
+   background-color: aliceblue;
+    border-radius: 100px;
+   display: flex;
+   justify-content: space-between;
+   padding:5px;
+   cursor: pointer;
+   color: #6b6565;
+}
+.convert_farsi_parent::before{
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #000;
+    left: 5px;
+    height: 23px;
+    width: 23px;
+    border-radius: 50%;
+    opacity: .5;
+    transition: all .3s ;
+
+}
+.convert_farsi_parent.active::before{
+   left:65%;
+
+}
+/****container************/
+
+.swiper {
+    width: 350px;
+    height: 500px;
+    margin: 5rem auto;
+    background-color: #b5c99a;
+    box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.5);
+    
+}
+.swiper-slide{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.swiper-slide .clock{
+    width: 300px;
+    height: 300px;
+    position: relative;
+    border-radius: 50%;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.swiper-slide .clock::before{
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    border-radius: 50%;
+   
+}
+.swiper-slide .clock span{
+    position: absolute;
+    color: #fff;
+    text-align: center;
+       transform: rotate(calc(var(--i) * 30deg))   
+        translate(0, -130px)            
+        rotate(calc(-1 * var(--i) * 30deg));
+
+}
+.hand {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: black;
+  transform-origin:50% 50%;
+  transition: transform 0.05s cubic-bezier(0, 2.53, 0.58, 1);
+}
+
+.hour-hand{
+ width: 70px; 
+ height: 6px;
+ }
+.minute-hand { 
+width: 100px; 
+height: 4px; 
+}
+.second-hand {
+width: 120px; 
+height: 2px;
+background: red;
+ }
