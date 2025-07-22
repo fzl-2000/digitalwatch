@@ -10,12 +10,13 @@ function toggleF() {
     if(toggle_button.classList.contains('active')){
         title.textContent="ساعت دیجیتال"
       date.innerHTML=setPersianDate()
+      setDigitalClock()
 
 }
     else{
         title.textContent="digital watch"
         date.innerHTML=setDate()
-       
+        EnglishClock()       
     }
 }
 //swiper
@@ -32,13 +33,7 @@ function setClock() {
 let hourHand = document.querySelector('.hour-hand');
 let minuteHand = document.querySelector('.minute-hand');
 let secondHand = document.querySelector('.second-hand');
-let digitalHour=document.querySelector('.digital-hour')
-let digitalMinute=document.querySelector('.digital-minute')
-let digitalSecond=document.querySelector('.digital-second')
 let nw=new Date()
-digitalHour.innerHTML=nw.getHours()
-digitalMinute.innerHTML=nw.getMinutes()
-digitalSecond.innerHTML=nw.getSeconds()
 let hourTime=nw.getHours()%12
  if (hourTime === 0) 
   hourTime = 12;
@@ -80,5 +75,32 @@ function setPersianDate() {
   monthNameT.innerHTML=monthsName
   return `${year} / ${month} / ${day}`
 }
-
+//set digital clock
+let digitalHour=document.querySelector('.digital-hour')
+let digitalMinute=document.querySelector('.digital-minute')
+let digitalSecond=document.querySelector('.digital-second')
+let ampmD=document.querySelector('.am-pm')
+let nw=new Date()
+function setDigitalClock() {
+digitalHour.innerHTML=nw.getHours()
+digitalMinute.innerHTML=nw.getMinutes()
+digitalSecond.innerHTML=nw.getSeconds()
+ampmD.style.display='none'
+}
   
+//digital clock
+function EnglishClock() {
+ let hours=nw.getHours()
+ let minute=nw.getMinutes()
+ let second=nw.getSeconds()
+let ampm = hours >= 12 ? 'pm' : 'am';
+ampmD.style.display='block'
+ampmD.textContent=ampm
+  hours = hours % 12;
+  hours = hours ? hours : 12;
+  digitalHour.innerHTML=hours
+  digitalMinute.innerHTML=minute
+  digitalSecond.innerHTML=second
+ console.log(ampm) 
+}
+EnglishClock()
